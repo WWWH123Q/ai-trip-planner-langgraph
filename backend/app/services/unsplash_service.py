@@ -6,16 +6,16 @@ from ..config import get_settings
 class UnsplashService:
     
     def __init__(self):
-        """初始化服务"""
-        settings = get_settings() #读配置
-        self.access_key = settings.unsplash_access_key  #
-        self.base_url = "https://api.unsplash.com" #设置API根地址，后面请求图片搜索时，会拼成：https://api.unsplash.com/search/photos
+
+        settings = get_settings() 
+        self.access_key = settings.unsplash_access_key 
+        self.base_url = "https://api.unsplash.com"
     
     def search_photos(self, query: str, per_page: int = 5) -> List[dict]:
        
         try:
-            url = f"{self.base_url}/search/photos" #构造url，这是 Unsplash 的图片搜索接口地址。
-            params = { #构造请求参数
+            url = f"{self.base_url}/search/photos"
+            params = {
                 "query": query,
                 "per_page": per_page,
                 "client_id": self.access_key
